@@ -31,3 +31,14 @@ app.get("/about", function (req, res) {
 app.get("/contact", function (req, res) {
   res.render("contact", { contactInfo: contactContent });
 });
+app.get("/compose", function (req, res) {
+  res.render("compose");
+});
+
+app.post("/compose", function (req, res) {
+  let obj = {
+    title: req.body.titulo,
+    contenido: req.body.contenido,
+  };
+  console.log(obj);
+});
