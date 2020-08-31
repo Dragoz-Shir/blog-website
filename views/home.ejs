@@ -2,4 +2,16 @@
 
 <h1>Home 1</h1>
 <p><%= homeInfo %></p>
+
+
+
+<% posts.forEach(post => { %>
+
+<h1><%= post.title %></h1>
+<p><%= post.contenido %></p>
+<% }) %>
+
+
+
+
 <%- include ("partials/footer") -%>

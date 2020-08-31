@@ -18,12 +18,14 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const posts = [];
+
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
 
 app.get("/", function (req, res) {
-  res.render("home", { homeInfo: homeStartingContent });
+  res.render("home", { homeInfo: homeStartingContent, posts: posts });
 });
 app.get("/about", function (req, res) {
   res.render("about", { aboutInfo: aboutContent });
@@ -36,9 +38,20 @@ app.get("/compose", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-  let obj = {
+  let post = {
     title: req.body.titulo,
     contenido: req.body.contenido,
   };
-  console.log(obj);
+
+  posts.push(post);
+  res.redirect("/");
+});
+
+app.get("/posts/:topics", function (req, res) {
+  let existe = "";
+  posts.forEach(function (post) {
+    if (post.title == req.params.topics) {
+      console.log("olvo");
+    }
+  });
 });
